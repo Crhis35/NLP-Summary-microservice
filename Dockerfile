@@ -8,5 +8,6 @@ RUN pip3 install --no-cache-dir -r requirements.txt
 
 COPY . .
 
+RUN chmod +x ./app.py
 
-CMD ["python","app.py"]
+CMD ["python3","app.py"]
