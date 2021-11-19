@@ -3,10 +3,13 @@
 from flask import Flask, request
 from flask_restx import Api, Resource, fields
 from werkzeug.middleware.proxy_fix import ProxyFix
-
+from flask_cors import CORS, cross_origin
 from docsumfuncs import summarize
 
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
+
 app.wsgi_app = ProxyFix(app.wsgi_app)
 api = Api(app, version='1.0', title='Text Summary API',
           description='NLP API to proceed text',
